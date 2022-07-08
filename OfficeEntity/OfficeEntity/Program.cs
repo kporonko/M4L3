@@ -3,6 +3,7 @@ OfficeEntityContextFactory officeEntityContextFactory = new OfficeEntityContextF
 using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
 {
     context.Database.EnsureCreated();
+    context.SaveChanges();
 }
 
 Console.WriteLine("Hello, World!");

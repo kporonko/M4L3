@@ -17,7 +17,7 @@ namespace OfficeEntity.Configs
             builder.Property(e => e.EmployeeProjectId).ValueGeneratedOnAdd();
             builder.Property(p => p.EmployeeId).IsRequired().HasColumnName("EmployeeId").HasColumnType("int");
             builder.Property(p => p.ProjectId).HasColumnName("ProjectId").IsRequired().HasColumnType("int");
-
+            builder.Property(p => p.Rate).HasColumnName("Rate").IsRequired().HasColumnType("money");
             builder.Property(p => p.StartedDate).IsRequired().HasColumnName("StartedDate").HasColumnType("datetime2").HasMaxLength(7);
         }
     }
