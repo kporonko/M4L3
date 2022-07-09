@@ -12,12 +12,10 @@ namespace OfficeEntity.Data
     {
         public OfficeEntityContext CreateDbContext(string[] args)
         {
-            ConnectionString connectionString = new ConnectionString();
-            Services services = new Services();
-            connectionString = services.Deserialization();
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=OfficeDb;Integrated Security=True;";
             var optionsBuilder = new DbContextOptionsBuilder<OfficeEntityContext>();
             var options = optionsBuilder
-                .UseSqlServer(connectionString.DbConnectionString)
+                .UseSqlServer(connectionString)
                 .Options;
 
             return new OfficeEntityContext(options);

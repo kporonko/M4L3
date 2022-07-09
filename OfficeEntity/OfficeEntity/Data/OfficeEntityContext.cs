@@ -24,6 +24,7 @@ namespace OfficeEntity.Data
             modelBuilder.ApplyConfiguration(new ProjectConfiguration());
             modelBuilder.ApplyConfiguration(new TitleConfiguration());
 
+            modelBuilder.Entity<Project>().HasOne(t => t.Client).WithMany(t => t.Projects).HasForeignKey(t => t.ClientId).IsRequired();
             modelBuilder.Entity<Employee>().HasOne(p => p.Office).WithMany(t => t.Employees).HasForeignKey(p => p.OfficeId);
             modelBuilder.Entity<Employee>().HasOne(p => p.Title).WithMany(p => p.Employees).HasForeignKey(p => p.TitleId);
             modelBuilder.Entity<EmployeeProject>().HasOne(p => p.Employee).WithMany(t => t.EmployeeProjects).HasForeignKey(p => p.EmployeeId);
