@@ -47,7 +47,7 @@ namespace OfficeEntity.Migrations
 
                     b.HasKey("ClientId");
 
-                    b.ToTable("Client");
+                    b.ToTable("Client", (string)null);
                 });
 
             modelBuilder.Entity("OfficeEntity.Models.Employee", b =>

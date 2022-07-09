@@ -16,6 +16,13 @@ namespace OfficeEntity.Data
         {
         }
 
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeProject> EmployeeProjects { get; set; }
+        public DbSet<Office> Offices { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Title> Titles { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
@@ -23,6 +30,7 @@ namespace OfficeEntity.Data
             modelBuilder.ApplyConfiguration(new OfficeConfiguration());
             modelBuilder.ApplyConfiguration(new ProjectConfiguration());
             modelBuilder.ApplyConfiguration(new TitleConfiguration());
+            modelBuilder.ApplyConfiguration(new ClientConfiguration());
 
             modelBuilder.Entity<Project>().HasOne(t => t.Client).WithMany(t => t.Projects).HasForeignKey(t => t.ClientId).IsRequired();
             modelBuilder.Entity<Employee>().HasOne(p => p.Office).WithMany(t => t.Employees).HasForeignKey(p => p.OfficeId);

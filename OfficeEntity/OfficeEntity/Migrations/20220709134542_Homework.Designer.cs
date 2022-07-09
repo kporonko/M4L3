@@ -12,7 +12,7 @@ using OfficeEntity.Data;
 namespace OfficeEntity.Migrations
 {
     [DbContext(typeof(OfficeEntityContext))]
-    [Migration("20220709132055_Homework")]
+    [Migration("20220709134542_Homework")]
     partial class Homework
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
