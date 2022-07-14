@@ -58,9 +58,9 @@ namespace OfficeEntity
 
         public void Grouping(OfficeEntityContext context)
         {
-            var res = context.Employees
+            var res = context.Employees.ToList()
+                .Where(t => !t.Title.Name.Contains('a'))
                 .GroupBy(i => i.Title)
-                .Where(t => !t.Key.Name.Contains('a'))
                 .Select(i => i.Key.Name);
             foreach (var item in res)
             {
