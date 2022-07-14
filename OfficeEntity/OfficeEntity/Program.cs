@@ -1,13 +1,39 @@
-﻿using OfficeEntity.Data;
+﻿using OfficeEntity;
+using OfficeEntity.Data;
+
+Queries queries = new Queries();
+
+// 1 Запрос, который возвращает разницу между CreatedDate/HiredDate и сегодня. Фильтрация должна быть выполнена на SQL сервере.
 using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
 {
-    var clients = context.Clients.Where(c => c.ClientId >= 0);
-    foreach (var client in clients)
+    foreach (var employee in context.Employees)
     {
-        Console.WriteLine(client.FirstName);
+        Console.WriteLine(employee.EmployeeId + ": " + queries.DateDiff(employee));
     }
-
-    context.SaveChanges();
 }
 
-Console.WriteLine("Hello, World!");
+// 2 Запрос, который обновляет 2 сущности. Сделать в одной  транзакции.
+using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
+{
+    var employee = context.Employees.Where(e => e.EmployeeId > 6).FirstOrDefault();
+    var employee2 = context.Employees.Where(e => e.EmployeeId > 0).FirstOrDefault();
+    queries.UpdateTwoEntities(context, ref employee, ref employee2);
+}
+
+// 3 Запрос, который добавляет сущность Employee с Title и Project.
+/*using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
+{
+    queries.AddEmployee(context);
+}
+
+// 4 Запрос, который удаляет сущность Employee.
+using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
+{
+    queries.DeleteEmployee(context, 21);
+}*/
+
+// 5 Запрос, который группирует сотрудников по ролям и возвращает название роли (Title) если оно не содержит ‘a’
+using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
+{
+    queries.Grouping(context);
+}

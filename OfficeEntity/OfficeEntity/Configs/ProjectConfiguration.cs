@@ -18,7 +18,7 @@ namespace OfficeEntity.Configs
             builder.Property(p => p.Name).IsRequired().HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(50);
             builder.Property(p => p.Budget).IsRequired().HasColumnName("Budget").HasColumnType("money");
             builder.Property(p => p.StartedDate).IsRequired().HasColumnName("StartedDate").HasColumnType("datetime2").HasMaxLength(7);
-            builder.Property(p => p.Description).IsRequired().HasColumnName("Description").HasColumnType("nvarchar");
+            builder.Property(p => p.Description).IsRequired().HasColumnName("Description").HasColumnType("nvarchar").HasMaxLength(1000);
         }
     }
 }

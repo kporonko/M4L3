@@ -15,6 +15,7 @@ namespace OfficeEntity.Data
             string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=OfficeDb;Integrated Security=True;";
             var optionsBuilder = new DbContextOptionsBuilder<OfficeEntityContext>();
             var options = optionsBuilder
+                .UseLazyLoadingProxies()
                 .UseSqlServer(connectionString)
                 .Options;
 

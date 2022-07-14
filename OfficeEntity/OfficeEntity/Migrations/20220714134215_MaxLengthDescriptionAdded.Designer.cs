@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OfficeEntity.Data;
 
@@ -11,9 +12,10 @@ using OfficeEntity.Data;
 namespace OfficeEntity.Migrations
 {
     [DbContext(typeof(OfficeEntityContext))]
-    partial class OfficeEntityContextModelSnapshot : ModelSnapshot
+    [Migration("20220714134215_MaxLengthDescriptionAdded")]
+    partial class MaxLengthDescriptionAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
