@@ -71,7 +71,7 @@ namespace OfficeEntity
         public void SelectingJoinedEntities(OfficeEntityContext context)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            foreach (var item in context.Employees)
+            foreach (var item in context.Employees.ToList())
             {
                 stringBuilder.AppendLine(
                     $"Id: {item.EmployeeId}" +

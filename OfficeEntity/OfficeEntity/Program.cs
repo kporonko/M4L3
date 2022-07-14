@@ -21,7 +21,7 @@ using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbCo
 }
 
 // 3 Запрос, который добавляет сущность Employee с Title и Project.
-/*using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
+using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
 {
     queries.AddEmployee(context);
 }
@@ -30,10 +30,16 @@ using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbCo
 using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
 {
     queries.DeleteEmployee(context, 21);
-}*/
+}
 
 // 5 Запрос, который группирует сотрудников по ролям и возвращает название роли (Title) если оно не содержит ‘a’
 using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
 {
     queries.Grouping(context);
+}
+
+// 6 Запрос которые выводит в консоль данные из 2х связанных сущностей.
+using (OfficeEntityContext context = new OfficeEntityContextFactory().CreateDbContext(Array.Empty<string>()))
+{
+    queries.SelectingJoinedEntities(context);
 }
